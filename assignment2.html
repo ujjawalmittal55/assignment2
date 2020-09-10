@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app='ControllerAsApp'>
+  <head>
+    <meta charset="utf-8">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="assignment2.js"></script>
+    
+   <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="styles/jquery-3.5.1.min.js"></script>
+	<script src="styles/bootstrap.min.js"></script>
+	<script src="styles/scripts.js"></script>
+	<style >
+		.error
+		{
+			color: red;
+		}
+		li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+	</style> 
+    <title>check list</title>
+  </head>
+  <body>
+    <h1>Shopping List Check Off</h1>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-6">
+    <div id="list1" ng-controller='ShoppingListController1 as list1' >
+      <h2>To Buy</h2>
+      <ul>
+        <li ng-repeat="x in items">
+          {{ x.quantity }} of {{ x.name }}
+          <button ng-click="removeItem($index); ">BOUGHT</button>
+        </li>
+      </ul>
+      <div class="error" ng-hide="!q">Everything is bought!</div>
+    </div>
+</div>
+    <div class="col-md-6">
+    <div id="list2" ng-controller='ShoppingListController2 as list2' class="col-md-6">
+      <h2>Already Bought</h2>
+    
+      <ul>
+        <li ng-repeat="item in 	items" >
+          {{ item.quantity }} of {{ item.name }}
+          
+        </li>
+      </ul>
+      <div class="error" ng-hide="items.length>0">Nothing bought yet.</div>
+    </div>
+</div>
+</div>
+</div>
+  </body>
+</html>
